@@ -1,0 +1,42 @@
+﻿<ribbon:RibbonWindow x:Class="RecipeManager.Main.FormMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RecipeManager.Main"
+        xmlns:ribbon="clr-namespace:Fluent;assembly=Fluent"
+        xmlns:commands="clr-namespace:RecipeManager.Main.Commands"
+        mc:Ignorable="d"
+        Title="FormMain" Height="385" Width="485" WindowStartupLocation="CenterScreen">
+
+    <ribbon:RibbonWindow.Resources>
+        <commands:RecipeEditorCommand x:Key="recipeEditorCommand" x:Name="recipeEditorCommand" />
+    </ribbon:RibbonWindow.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ribbon:Ribbon>
+            <ribbon:Ribbon.Menu>
+                <ribbon:Backstage>
+                    <ribbon:BackstageTabControl>
+                        <ribbon:BackstageTabItem Header="New" />
+                        <ribbon:BackstageTabItem Header="Print" />
+                        <ribbon:BackstageTabItem Name="miExit" Header="Exit" MouseUp="miExit_MouseUp"/>
+                    </ribbon:BackstageTabControl>
+                </ribbon:Backstage>
+            </ribbon:Ribbon.Menu>
+
+            <ribbon:RibbonTabItem Header="Management">
+                <ribbon:RibbonGroupBox Header="Editors">
+                    <ribbon:Button Command="{StaticResource recipeEditorCommand}" 
+                                   LargeIcon="Images\recipes.png" Header="Recipes"/>
+                    <ribbon:Button Header="Ingredients" LargeIcon="Images\ingredients.png"/>
+                </ribbon:RibbonGroupBox>
+            </ribbon:RibbonTabItem>
+        </ribbon:Ribbon>
+    </Grid>
+</ribbon:RibbonWindow>
