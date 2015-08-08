@@ -7,7 +7,7 @@
         xmlns:ribbon="clr-namespace:Fluent;assembly=Fluent"
         xmlns:commands="clr-namespace:RecipeManager.Main.Commands"
         mc:Ignorable="d"
-        Title="FormMain" Height="385" Width="485" WindowStartupLocation="CenterScreen">
+        Title="Recipe Manager" Height="385" Width="485" WindowStartupLocation="CenterScreen">
 
     <ribbon:RibbonWindow.Resources>
         <commands:RecipeEditorCommand x:Key="recipeEditorCommand" x:Name="recipeEditorCommand" />
@@ -25,16 +25,16 @@
                     <ribbon:BackstageTabControl>
                         <ribbon:BackstageTabItem Header="New" />
                         <ribbon:BackstageTabItem Header="Print" />
-                        <ribbon:BackstageTabItem Name="miExit" Header="Exit" MouseUp="miExit_MouseUp"/>
+                        <ribbon:BackstageTabItem Name="miExit" Header="Exit" MouseUp="miExit_MouseUp" />
                     </ribbon:BackstageTabControl>
                 </ribbon:Backstage>
             </ribbon:Ribbon.Menu>
 
             <ribbon:RibbonTabItem Header="Management">
                 <ribbon:RibbonGroupBox Header="Editors">
-                    <ribbon:Button Command="{StaticResource recipeEditorCommand}" 
-                                   LargeIcon="Images\recipes.png" Header="Recipes"/>
-                    <ribbon:Button Header="Ingredients" LargeIcon="Images\ingredients.png"/>
+                    <ribbon:Button Command="{StaticResource recipeEditorCommand}"
+                                   LargeIcon="Images\recipes.png" Header="Recipes" />
+                    <ribbon:Button Header="Ingredients" LargeIcon="Images\ingredients.png" />
                 </ribbon:RibbonGroupBox>
             </ribbon:RibbonTabItem>
         </ribbon:Ribbon>

@@ -6,54 +6,61 @@
         xmlns:local="clr-namespace:RecipeManager.Recipes"
         xmlns:ribbon="clr-namespace:Fluent;assembly=Fluent"
         mc:Ignorable="d"
-        Title="FRecipesEditor" Height="416" Width="598" WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    
+        Title="Recipes Editor" Height="643" Width="922" WindowStartupLocation="CenterScreen" WindowState="Normal" Background="#FF323232">
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
 
-        <ribbon:Ribbon>
+        <ribbon:Ribbon Grid.Row="0">
             <ribbon:Ribbon.Menu>
                 <ribbon:Backstage>
                     <ribbon:BackstageTabControl>
-                        <ribbon:BackstageTabItem Name="miNew" Header="New" />
-                        <ribbon:BackstageTabItem Name="miExit" Header="Exit" MouseUp="miExit_MouseUp"/>
+                        <ribbon:BackstageTabItem Header="New" />
+                        <ribbon:BackstageTabItem Header="Edit" />
+                        <ribbon:BackstageTabItem Name="miExit" Header="Exit" MouseUp="miExit_MouseUp" />
                     </ribbon:BackstageTabControl>
                 </ribbon:Backstage>
             </ribbon:Ribbon.Menu>
-
-            <!--<ribbon:RibbonTabItem Header="Management">
-                <ribbon:RibbonGroupBox Header="Editors">
-                </ribbon:RibbonGroupBox>
-            </ribbon:RibbonTabItem>-->
         </ribbon:Ribbon>
 
-        <Grid Grid.Row="1" Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            
-            <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Recipes Title:</Label>
-            <TextBox Grid.Row="0" Grid.Column="1" MaxHeight="30" HorizontalContentAlignment="Center" Name="txtTitle"/>
-
-            <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Recipes Author:</Label>
-            <TextBox Grid.Row="1" Grid.Column="1" MaxHeight="30" HorizontalContentAlignment="Center" Name="txtAuthor"/>
-
-            <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Recipes Date:</Label>
-            <TextBox Grid.Row="2" Grid.Column="1" MaxHeight="30" HorizontalContentAlignment="Center" Name="txtDate"/>
-
-        </Grid>
+        <Border x:Name="borderRecipeInfo" BorderBrush="Black" BorderThickness="1" Margin="258,10,10,0" Height="179" VerticalAlignment="Top" CornerRadius="0,10,0,10"
+                Background="#FF212121" Grid.Row="1">
+            <Grid Margin="9" HorizontalAlignment="Center" Width="625.5">
+                <Label Content="Recipes Title:" Margin="130.57,26.311,0,0" Foreground="#FFA1B8D3" FontSize="21.333"
+                       HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <TextBox MinWidth="200" VerticalContentAlignment="Center" Background="#FF323232" Foreground="#FFA1B8D3" x:Name="txtTitle" Text="{Binding TxtTitle}"
+                         Margin="262.877,34.618,112.623,0" FontSize="16" VerticalAlignment="Top" Height="30" />
+                <Label Content="Recipes Author:" Margin="105.413,64.815,0,59.349" Foreground="#FFA1B8D3" FontSize="21.333"
+                       HorizontalContentAlignment="Right" HorizontalAlignment="Left" />
+                <TextBox MinWidth="200" VerticalContentAlignment="Center" Background="#FF323232" Foreground="#FFA1B8D3" x:Name="txtAuthor" Text="{Binding TxtAuthor}"
+                         Margin="263.21,72.556,112.289,56.736" d:LayoutOverrides="HorizontalAlignment, TopMargin, BottomMargin" FontSize="16" Height="30" Width="250" />
+                <Label Content="Recipes Date:" Margin="126.27,0,0,17.275" Foreground="#FFA1B8D3" FontSize="21.333"
+                       HorizontalContentAlignment="Right" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                <TextBox MinWidth="200" VerticalContentAlignment="Center" Background="#FF323232" Foreground="#FFA1B8D3" x:Name="txtDate" Text="{Binding TxtDate}"
+                         Margin="262.877,110.371,112.623,0" VerticalAlignment="Top" d:LayoutOverrides="HorizontalAlignment" FontSize="16" Height="30" />
+            </Grid>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Width="244" Margin="10,10,0,10" CornerRadius="0,10,0,10" Background="#FF212121" Grid.Row="1">
+            <ListBox x:Name="listRecipes" Margin="9" ItemsSource="{Binding Recipes}" BorderBrush="Transparent" Background="#FF212121" Foreground="#FFA1B8D3" FontSize="21.333"
+                     SelectedItem="{Binding SelectedItem}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding RecipeTitle}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="258,194,10,10" CornerRadius="0,10,0,10" Background="#FF212121" Grid.Row="1">
+            <RichTextBox x:Name="txtInstructions" Margin="9" BorderBrush="Transparent" Background="Transparent" Foreground="#FFA1B8D3" FontSize="16" CaretBrush="#FFA1BBD3">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="{Binding TxtInstructions}" />
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </Border>
     </Grid>
 </ribbon:RibbonWindow>

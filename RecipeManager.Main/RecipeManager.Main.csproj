@@ -60,6 +60,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Fluent.Ribbon.3.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
@@ -137,12 +138,8 @@
     <Resource Include="Images\ingredients.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RecipeManager.Generic.DataAccess\RecipeManager.Generic.DataAccess.csproj">
-      <Project>{AD3702F0-C87C-404E-8726-5511786CB67B}</Project>
-      <Name>RecipeManager.Generic.DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\RecipesManager.RecipesTable.DataAccess\RecipeManager.RecipesTable.DataAccess.csproj">
-      <Project>{a6b4df74-1344-4972-bf1d-b204931000a4}</Project>
+    <ProjectReference Include="..\RecipeManager.RecipesTable.DataAccess\RecipeManager.RecipesTable.DataAccess.csproj">
+      <Project>{20ea5bfb-798b-40fd-bf61-736b24bd614b}</Project>
       <Name>RecipeManager.RecipesTable.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\RecipesManager.Recipes\RecipeManager.Recipes.csproj">
